@@ -73,7 +73,14 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+   os.path.join(PROJECT_DIR, 'static_development')
 )
+
+TEMPLATE_CONTEXT_PROCESSORS =  ("django.contrib.auth.context_processors.auth",
+        "django.core.context_processors.debug",
+        "django.core.context_processors.i18n",
+        "django.core.context_processors.media",
+        "django.core.context_processors.request")
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -100,6 +107,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
+    'pagination.middleware.PaginationMiddleware',
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
@@ -127,6 +135,9 @@ INSTALLED_APPS = (
     'recipemonkeyapp',
     'taggit',
     'tastypie',
+    'pagination',
+    'crispy-forms',
+    'floppyforms',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
