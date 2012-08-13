@@ -119,7 +119,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'bankdownloads',
-    'recipemonkeyapp'
+    'recipemonkeyapp',
+    'taggit',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
