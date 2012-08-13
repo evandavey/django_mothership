@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'bankdownloads',
-    'recipemonkey'
+    'recipemonkeyapp'
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
