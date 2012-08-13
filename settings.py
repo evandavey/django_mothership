@@ -136,7 +136,7 @@ INSTALLED_APPS = (
     'taggit',
     'tastypie',
     'pagination',
-    'crispy-forms',
+    'crispy_forms',
     'floppyforms',
     'gunicorn',
     # Uncomment the next line to enable admin documentation:
