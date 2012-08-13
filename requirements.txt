@@ -1,0 +1,5 @@
+django
+south
+MySQL-python
+-e git+https://github.com/evandavey/django-bankdownloads.git@development#egg=django-bankdownloads
+-e git+https://github.com/vanessacochrane/Recipe-Monkey.git@development#egg=django-recipemonkey

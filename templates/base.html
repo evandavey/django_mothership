@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cochrane Davey: {% block title %}Home{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+  	<meta name="author" content="">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+
+    <!-- Le styles -->
+    <link href="{{STATIC_URL}}/bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="{{STATIC_URL}}/bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="{{STATIC_URL}}/bootstrap/docs/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{STATIC_URL}}/bootstrap/docs/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{STATIC_URL}}/bootstrap/docs/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{STATIC_URL}}/bootstrap/docs/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="{{STATIC_URL}}/bootstrap/docs/assets/ico/apple-touch-icon-57-precomposed.png">
+
+
+  {% block feeds %}{% endblock %}
+
+  {% block extra_scripts %}{% endblock %}
+  {% url 'admin:jsi18n' as jsi18nurl %}
+  </head>
+
+
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Mothership</a>
+		 <div class="btn-group pull-right">
+			        {% if user.is_authenticated %}
+			         
+		            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+		              <i class="icon-user"></i> {{ user.username }}
+		              <span class="caret"></span>
+		            </a>
+		            <ul class="dropdown-menu">
+		              <li><a href="/profiles/{{ user.username }}/">Profile</a></li>
+		              <li class="divider"></li>
+		              <li><a href="/accounts/logout">Sign Out</a></li>
+		            </ul>
+					{% else %}
+				 <a class="btn" href="/accounts/login/?next={% ifequal request.path "/accounts/logout/" %}/{% else %}{{ request.path }}{% endifequal %}">
+		                  <i class="icon-user"></i> Log in
+				 </a>
+					{% endif %}
+		   </div>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/admin">Admin</a></li>
+              <li><a href="/profiles">Members</a></li>
+            </ul>
+	   {% block extranav %}{% endblock %}
+   	   <form class="navbar-search pull-left" method="get" action="/search">
+            <input type="text" name="q" id="id_q" class="search-query span2" placeholder="Search">
+          </form>
+          </div><!--/.nav-collapse -->
+	  
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+		{% if messages %}
+		    {% for message in messages %}
+		      <div class="message {% if message.tags %} message_{{ message.tags }}{% else %}message_info{% endif %}">
+		        <h4>{{ message }}</h4>
+		      </div>
+		    {% endfor %}
+		  {% endif %}
+
+		  <h1>{% block content_header %}{% endblock %}</h1>
+  		 {% block content %}
+	     {% endblock %}
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/jquery.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-transition.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-alert.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-modal.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-dropdown.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-tab.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-tooltip.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-popover.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-button.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-collapse.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-carousel.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/docs/assets/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>
